@@ -11,7 +11,7 @@ interface User {
   lastName: string;
   email: string;
   phoneNumber: string;
-  sex: string;
+  gender: string;
   dateOfBirth: string;
   subjects: string[];
   hobbies: boolean[];

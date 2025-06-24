@@ -4,7 +4,7 @@ import { generateUser } from '../support/generateUser';
 
 describe('Student Registration page', () => {
   before(() => {
-    cy.visit('/');
+    cy.visit('/automation-practice-form');
   });
 
   it('registers a student with valid data', () => {

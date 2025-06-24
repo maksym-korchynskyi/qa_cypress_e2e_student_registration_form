@@ -36,7 +36,7 @@ Cypress.Commands.add(
     lastName,
     email,
     phoneNumber,
-    sex,
+    gender,
     dateOfBirth,
     subjects,
     hobbies,
@@ -49,7 +49,11 @@ Cypress.Commands.add(
     cy.get('#userNumber').type(phoneNumber);
 
     cy.get('#dateOfBirthInput').type('{selectAll}' + dateOfBirth);
-    cy.get(`label[for="gender-radio-${sex === 'Male' ? '1' : '2'}"]`).click();
+    cy.get(
+      `label[for="gender-radio-${
+        ['Male', 'Female', 'Other'].indexOf(gender) + 1
+      }"]`
+    ).click();
 
     cy.get('#subjectsInput').type(
       subjects.reduce((input, subject) => input + `${subject}{Enter}`, '')
@@ -57,7 +61,7 @@ Cypress.Commands.add(
 
     for (let i = 0; i < 3; i++) {
       if (hobbies[i]) {
-        cy.get(`label[for="hobbies-checkbox-${i + 1}"`).click();
+        cy.get(`label[for="hobbies-checkbox-${i + 1}"]`).click();
       }
     }
 
@@ -92,7 +96,7 @@ Cypress.Commands.add(
     lastName,
     email,
     phoneNumber,
-    sex,
+    gender,
     dateOfBirth,
     subjects,
     hobbies,
@@ -100,7 +104,7 @@ Cypress.Commands.add(
   }) => {
     cy.checkRowValue('Student Name', `${firstName} ${lastName}`);
     cy.checkRowValue('Student Email', email);
-    cy.checkRowValue('Gender', sex);
+    cy.checkRowValue('Gender', gender);
     cy.checkRowValue('Mobile', phoneNumber);
     cy.checkRowValue('Date of Birth', getFormattedDate(dateOfBirth));
     cy.checkRowValue('Subjects', subjects.join(', '));

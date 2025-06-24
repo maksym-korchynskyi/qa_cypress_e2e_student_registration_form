@@ -17,10 +17,10 @@ const SUBJECTS = [
 ];
 
 export function generateUser() {
-  const sex = faker.person.sex().replace(/^\w/, (c) => c.toUpperCase());
+  const gender = faker.person.sex().replace(/^\w/, (c) => c.toUpperCase());
 
-  const firstName = faker.person.firstName(sex).replace(/[^a-zA-Z]+/g, '');
-  const lastName = faker.person.lastName(sex).replace(/[^a-zA-Z]+/g, '');
+  const firstName = faker.person.firstName(gender).replace(/[^a-zA-Z]+/g, '');
+  const lastName = faker.person.lastName(gender).replace(/[^a-zA-Z]+/g, '');
 
   const phoneNumber = faker.phone.number('0#########');
   const email = `${firstName}_${lastName}@gmail.com`;
@@ -49,7 +49,7 @@ export function generateUser() {
   return {
     firstName,
     lastName,
-    sex,
+    gender,
     phoneNumber,
     email,
     dateOfBirth,
